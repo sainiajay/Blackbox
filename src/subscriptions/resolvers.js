@@ -1,6 +1,7 @@
 import asyncify from 'callback-to-async-iterator';
+import { Container } from 'typedi';
 
-export const buildResolver = (channel) => {
+const buildResolver = (channel) => {
     const jobResultListener = (callback) => 
         channel.consume('output_q', (message) => { 
             if(!message) {
@@ -26,4 +27,5 @@ export const buildResolver = (channel) => {
     return resolvers;
 };
 
-export default buildResolver;
+const resolver = () => buildResolver(Container.get('queue'));
+export default resolver;

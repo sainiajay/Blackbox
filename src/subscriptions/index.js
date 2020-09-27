@@ -1,7 +1,7 @@
-import buildResolver from './resolvers';
+import resolvers from './resolvers';
 import typeDefs from './typeDefs';
 
 export {
     typeDefs,
-    buildResolver,
+    resolvers,
 };

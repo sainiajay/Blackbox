@@ -1,12 +1,14 @@
 import { createTestClient } from 'apollo-server-testing';
 import fs from 'fs';
 import path from 'path';
-import { server } from '../main';
+import { server, channelPromise } from '../main';
 
 const testDataRoot = path.join(__dirname, 'programs');
 
 describe('Submissions', () => {
     const { mutate } = createTestClient(server);
+
+    beforeAll(() => channelPromise);
     
     const mutationString = `{
         mutation SubmitCode($testInput: TestInput!) {
@@ -40,7 +42,7 @@ describe('Submissions', () => {
         const dir = await fs.promises.opendir(testDataPath);
         for await (const dirent of dir) {
             if(dirent.isFile() && dirent.name.match(/\.(go|py|java)$/)) {
-                const filePath = path.join(testDataRoot, dirent.name);
+                const filePath = path.join(testDataPath, dirent.name);
                 fs.promises.readFile(filePath, 'utf8').then(singleProgramTest)
             }
         }

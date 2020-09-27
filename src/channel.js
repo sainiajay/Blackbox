@@ -11,8 +11,4 @@ const initChannelHelper = async (connectionString) => {
     return channel;
 };
 
-const getChannel = initChannelHelper;
-  
-export {
-    getChannel
-};
+export const createChannel = initChannelHelper;
