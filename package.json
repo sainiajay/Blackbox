@@ -4,7 +4,7 @@
   "description": "Sandbox to securely run untrusted code.",
   "main": "src/main.js",
   "scripts": {
-    "start": "node -r esm main.js",
+    "start": "node -r esm src/main.js",
     "test": "jest"
   },
   "repository": {
@@ -12,14 +12,16 @@
     "url": "git+https://github.com/sainiajay/Blackbox.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ajay Saini <saini.ajay172@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sainiajay/Blackbox/issues"
   },
   "homepage": "https://github.com/sainiajay/Blackbox#readme",
   "dependencies": {
+    "amqplib": "^0.6.0",
     "apollo-server": "^2.16.1",
+    "callback-to-async-iterator": "^1.1.1",
     "esm": "^3.2.25",
     "graphql": "^15.3.0"
   },
@@ -27,6 +29,10 @@
     "@babel/preset-env": "^7.11.0",
     "apollo-server-testing": "^2.17.0",
     "babel-jest": "^26.3.0",
+    "eslint-config-airbnb": "^18.2.0",
     "jest": "^26.4.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
